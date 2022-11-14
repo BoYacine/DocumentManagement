@@ -1,11 +1,10 @@
-package com.yacine.DocumentRules;
+package com.yacine.DocumentRules.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,10 +19,9 @@ public class MetaData {
     @Column(unique = true, name = "MetaName")
     private String name;
     private String typeData;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @ToString.Exclude
+    @OneToMany(mappedBy = "metaData",fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Type> types=new ArrayList<>();
+    private List<TypesMetadatas> typesMetadatas=new ArrayList<>();
 
 
 }
