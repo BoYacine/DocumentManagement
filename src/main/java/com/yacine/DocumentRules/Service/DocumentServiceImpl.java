@@ -40,7 +40,7 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public void AddValue(Document document, String [] value) {
         Type type=typeRepo.findByName(document.getType().getName());
-        //value = new String[type.getTypesMetadatas().size()];
+        value = new String[type.getTypesMetadatas().size()];
         int cp=0;
         for (TypesMetadatas typesMetadata : type.getTypesMetadatas()) {
             MetaDataValue metaDataValue=
